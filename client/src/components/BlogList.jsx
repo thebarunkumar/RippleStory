@@ -21,14 +21,15 @@ const BlogList = () => {
   };
 
   return (
-    <div>
+    <div className="px-4 sm:px-6 lg:px-12 xl:px-24">
+      {/* Category buttons */}
       <div className="flex justify-center gap-4 sm:gap-8 my-10 relative">
         {blogCategories.map((item) => (
           <div key={item} className="relative">
             <button
               onClick={() => setMenu(item)}
               className={`cursor-pointer text-gray-500 ${
-                menu === item && "text-white px-6 md:px-0 pt-0.5"
+                menu === item && "text-white px-4 pt-0.5"
               }`}
             >
               {item}
@@ -36,14 +37,16 @@ const BlogList = () => {
                 <motion.div
                   layoutId="underline"
                   transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full px-6 md:px-0"
+                  className="absolute left-0 right-0 top-0 h-7 -z-1 bg-primary rounded-full"
                 ></motion.div>
               )}
             </button>
           </div>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mb-24 sm:mx-12 lg:mx-24 xl:mx-40 px-6 md:px-0">
+
+      {/* Blog cards grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 mb-24">
         {filteredBlogs()
           .filter((blog) => (menu === "All" ? true : blog.category === menu))
           .map((blog) => (
